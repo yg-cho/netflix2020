@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {moviesAPI} from "../api";
 
 export default () => {
-    const [moives, setMovies ] = useState({
+    const [movies, setMovies ] = useState({
         nowPlaying : [],
         upComing : [],
         popular: [],
@@ -23,7 +23,7 @@ export default () => {
             upComingError,
             popularError
         })
-        console.log(upComing)
+        console.log(nowPlaying);
     }
 
 
@@ -35,7 +35,7 @@ export default () => {
 
     return (
         <div>
-            <h1>{moives.nowPlaying.length}</h1>
+            <h1>movie: {movies.nowPlaying?.length}</h1>
         </div>
     );
 };
