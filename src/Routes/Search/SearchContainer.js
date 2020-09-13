@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const SearchContainer = () => {
+const SearchContainer = props => {
     return (
         <div>
-            <h1>Search</h1>
+
         </div>
     );
+};
+
+SearchContainer.propTypes = {
+
 };
 
 export default SearchContainer;

@@ -39,9 +39,9 @@ const getAnything = async (path, params = {}) => {
 }
 
 export const moviesAPI = {
-    nowPlaying: () => getAnything("Movie/now_playing"),
-    upComing: () => getAnything("Movie/upcoming"),
-    popular: () => getAnything("Movie/popular"),
+    nowPlaying: () => getAnything("movie/now_playing"),
+    upComing: () => getAnything("movie/upcoming"),
+    popular: () => getAnything("movie/popular"),
     movieDetail: id=>
         getAnything(`movie/${id}`, {
             params: {

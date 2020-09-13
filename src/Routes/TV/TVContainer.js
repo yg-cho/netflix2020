@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {tvAPI} from "../../api";
-
+import TvPresenter from "./TVPresenter";
 const TvContainer = () => {
 
     const [tv, setTv] = useState({
@@ -31,9 +31,13 @@ const TvContainer = () => {
     }, []);
 
     return (
-        <div>
-            <h1>tv: {tv.topRated?.length}</h1>
-        </div>
+       // <TvPresenter
+       //      loading={tv.loading}
+       //      topRated={tv.topRated}
+       //      airingToday={tv.airingToday}
+       //      popular={tv.popular}
+       // />
+        <TvPresenter {...tv} />
     );
 };
 

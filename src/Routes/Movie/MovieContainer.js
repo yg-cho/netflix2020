@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import {moviesAPI} from "../../api";
-
+import MoviePresenter from "./MoviePresenter";
 
 const MovieContainer = () => {
-    const [movies, setMovies ] = useState({
+    const [movies, setMovies] = useState({
         nowPlaying : [],
         upComing : [],
         popular: [],
         nowPlayingError: null,
         upComingError: null,
-        popularError: null
+        popularError: null,
+        loading: true
     });
 
     const getData = async () => {
@@ -22,7 +23,8 @@ const MovieContainer = () => {
             popular,
             nowPlayingError,
             upComingError,
-            popularError
+            popularError,
+            loading: false
         })
         console.log(nowPlaying);
     }
@@ -34,9 +36,7 @@ const MovieContainer = () => {
 
 
     return (
-        <div>
-            <h1>movie: {movies.nowPlaying?.length}</h1>
-        </div>
+        <MoviePresenter {...movies} />
     );
 };
 
