@@ -1,17 +1,17 @@
 import React,{useState} from 'react';
-import {moviesAPI, tvAPI} from "../../api";
+//import {moviesAPI, tvAPI} from "../../api";
 import SearchPresenter from "./SearchPresenter";
 
 
 const SearchContainer = () => {
     const [keyword, setKeyword] = useState("");
-    const [results, setResults] = useState({
-        movies: [],
-        shows: [],
-        movieError: null,
-        showError: null,
-        loading: false
-    });
+    // const [results, setResults] = useState({
+    //     movies: [],
+    //     shows: [],
+    //     movieError: null,
+    //     showError: null,
+    //     loading: false
+    // });
 
 
     const onChange = (event) => {
@@ -24,7 +24,7 @@ const SearchContainer = () => {
 
     return (
        <SearchPresenter
-           {...results}
+           /*{...results}*/
            onChange={onChange}
            onSubmit={search}
            keyword={keyword}
