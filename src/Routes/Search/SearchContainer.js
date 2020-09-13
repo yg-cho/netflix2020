@@ -15,7 +15,7 @@ const SearchContainer = () => {
 
 
     const onChange = (event) => {
-
+        setKeyword(event.target.value);
     }
 
     const search = async () => {

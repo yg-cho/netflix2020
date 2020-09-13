@@ -1,11 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from "styled-components";
 
-const SearchPresenter = ({movies, shows, error, loading, onChange, onSubmit, keyword}) => {
+const Container = styled.div`
+    padding: 0px 20px;
+`;
+
+const Form = styled.form`
+    margin-bottom: 50px;
+    width: 100%;
+`;
+
+const Input = styled.input`
+    all: unset;
+    font-size: 28px;
+    width: 100%;
+`;
+
+const SearchPresenter = ({
+    movies,
+    shows,
+    error,
+    loading,
+    onChange,
+    onSubmit,
+    keyword
+}) => {
     return (
-        <div>
-            <h1>{movies.length}</h1>
-        </div>
+        <Container>
+            <Form onSubmit={onSubmit}>
+                <Input
+                    placeholder={"Search Movies or Tv shows..."}
+                    value={keyword}
+                    onChange={onChange}
+                />
+            </Form>
+        </Container>
     );
 };
 
