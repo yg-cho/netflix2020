@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import {tvAPI} from "../api";
+import {tvAPI} from "../../api";
 
-export default () => {
+const TvContainer = () => {
+
     const [tv, setTv] = useState({
         topRated: [],
         popular: [],
@@ -33,5 +34,7 @@ export default () => {
         <div>
             <h1>tv: {tv.topRated?.length}</h1>
         </div>
-    )
+    );
 };
+
+export default TvContainer;

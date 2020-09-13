@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {moviesAPI} from "../api";
+import {moviesAPI} from "../../api";
 
-export default () => {
+
+const MovieContainer = () => {
     const [movies, setMovies ] = useState({
         nowPlaying : [],
         upComing : [],
@@ -32,10 +33,11 @@ export default () => {
     }, []);
 
 
-
     return (
         <div>
             <h1>movie: {movies.nowPlaying?.length}</h1>
         </div>
     );
 };
+
+export default MovieContainer;
