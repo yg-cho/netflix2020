@@ -1,16 +1,35 @@
-import React from 'react';
+import React,{useState} from 'react';
+import {moviesAPI, tvAPI} from "../../api";
+import SearchPresenter from "./SearchPresenter";
 
 
-const SearchContainer = props => {
+const SearchContainer = () => {
+    const [keyword, setKeyword] = useState("");
+    const [results, setResults] = useState({
+        movies: [],
+        shows: [],
+        movieError: null,
+        showError: null,
+        loading: false
+    });
+
+
+    const onChange = (event) => {
+
+    }
+
+    const search = async () => {
+
+    }
+
     return (
-        <div>
-
-        </div>
+       <SearchPresenter
+           {...results}
+           onChange={onChange}
+           onSubmit={search}
+           keyword={keyword}
+       />
     );
-};
-
-SearchContainer.propTypes = {
-
 };
 
 export default SearchContainer;
