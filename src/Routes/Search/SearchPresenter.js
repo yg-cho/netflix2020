@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
+import Section from "../../Components/Section";
+import Poster from "../../Components/Poster";
+import Loader from "../../Components/Loader";
 
 const Container = styled.div`
     padding: 0px 20px;
@@ -35,23 +38,43 @@ const SearchPresenter = ({
                     onChange={onChange}
                 />
 
-
             </Form>
-            { movies && movies.length > 0 &&
-                <div> movie is :
-                    {movies.map(item => (
-                        <h1>{item.title}</h1>
-                    ))}
-                </div>
-            }
+            {loading ? (
+                <Loader />
+            ) : (
+                <>
+                    {movies && movies.length > 0 && (
+                        <Section title={"Movie Result :"}>
+                            {movies.map(item => (
+                                <Poster
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.title}
+                                    imageurl={item.poster_path}
+                                    voteAverage={item.vote_average}
+                                    year={item.release_date}
+                                />
+                            ))}
+                        </Section>
+                    )}
 
-            { shows && shows.length > 0 &&
-                <div> show is :
-                    {shows.map(item => (
-                        <h1>{item.name}</h1>
-                    ))}
-                </div>
-            }
+                    {shows && shows.length > 0 && (
+                        <Section title={"Show Result :"}>
+                            {shows.map(item => (
+                                <Poster
+                                    key={item.id}
+                                    id={item.id}
+                                    title={item.name}
+                                    imageurl={item.poster_path}
+                                    voteAverage={item.vote_average}
+                                    year={item.first_air_date}
+                                />
+                            ))}
+                        </Section>
+                    )}
+                </>
+
+            )}
 
         </Container>
     );
