@@ -47,6 +47,7 @@ export const moviesAPI = {
             { append_to_response: "videos" }
         ),
     search: (query) => getAnything(`search/movie`, { query }),
+    similar: id => getAnything(`movie/${id}/similar`)
 
 }
 
@@ -61,5 +62,7 @@ export const tvAPI = {
             }
         }),
     search: query =>
-        getAnything(`search/tv`,{query})
+        getAnything(`search/tv`,{query}),
+    similar: id => getAnything(`tv/${id}/similar`)
+
 }

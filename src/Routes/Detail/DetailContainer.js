@@ -10,25 +10,34 @@ const DetailContainer = ({ pathname }) => {
     const [item, setItem] = useState({
         result : {},
         resultError : null,
-        loading : true
+        loading : true,
+        similar : [],
+        similarError : null
     })
+
+
 
     // 화면이 로딩될때 무조건 실행되는 기능
     useEffect(() => {
         // networking
         getData()
-    }, [id])
+    })
 
     const getData = async () => {
         const [result, resultError] = location.pathname.includes("/movie/")
         ? await moviesAPI.movieDetail(id)
         : await tvAPI.tvDetail(id)
+        const [similar, similarError] = location.pathname.includes("/movie/")
+        ? await moviesAPI.similar(id)
+        : await tvAPI.similar(id)
         setItem({
             result,
             resultError,
-            loading: false
+            loading: false,
+            similar,
+            similarError
         })
-        console.log(result);
+        console.log("++++++++++++++++++++++++++++++", similar);
 
     }
 
