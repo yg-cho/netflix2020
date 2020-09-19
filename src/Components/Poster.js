@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const Container = styled.div`
     font-size : 12px;
@@ -47,36 +48,37 @@ const Year = styled.span`
 `;
 
 
-const Poster = ({id, imageurl, title, voteAverage, year}) => {
-    return (
-        <Container>
-            <ImageContainer>
-                {/*<Image bgUrl={`https://image.tmdb.org/t/p/w500${imageurl}`} />*/}
-                <Image
-                    bgUrl={
-                        imageurl
-                            ? (`https://image.tmdb.org/t/p/w500${imageurl}`)
-                            : (require("../assets/noimage.jpg"))
-                    }
-                />
-                <Vote>
-                    <span role={"img"} aria-label={"rating"}>⭐ </span>
-                    {voteAverage} / 10
-                </Vote>
-            </ImageContainer>
-            <Title>{title.length > 18 ? `${title.substring(0,18)}...` : title}</Title>
-            <Year>{year}</Year>
+const Poster = ({id, imageurl, title, voteAverage, year, isMovie=true}) => (
+        <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
+            <Container>
+                <ImageContainer>
+                    {/*<Image bgUrl={`https://image.tmdb.org/t/p/w500${imageurl}`} />*/}
+                    <Image
+                        bgUrl={
+                            imageurl
+                                ? (`https://image.tmdb.org/t/p/w500${imageurl}`)
+                                : (require("../assets/noimage.jpg"))
+                        }
+                    />
+                    <Vote>
+                        <span role={"img"} aria-label={"rating"}>⭐ </span>
+                        {voteAverage} / 10
+                    </Vote>
+                </ImageContainer>
+                <Title>{title.length > 18 ? `${title.substring(0,18)}...` : title}</Title>
+                <Year>{year}</Year>
 
-        </Container>
+            </Container>
+        </Link>
     );
-};
 
 Poster.propTypes = {
     id: PropTypes.number.isRequired,
     imageurl: PropTypes.string,
     title: PropTypes.string.isRequired,
     voteAverage: PropTypes.number,
-    year: PropTypes.string
+    year: PropTypes.string,
+    isMovie: PropTypes.bool
 };
 
 export default Poster;

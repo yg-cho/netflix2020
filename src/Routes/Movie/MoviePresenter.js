@@ -54,7 +54,6 @@ const MoviePresenter = ({nowPlaying, upComing, popular, error, loading}) => {
                                 imageurl={movie.poster_path}
                                 voteAverage={movie.vote_average}
                                 year={movie.release_date}
-
                             />
                         ))}
                     </Section>

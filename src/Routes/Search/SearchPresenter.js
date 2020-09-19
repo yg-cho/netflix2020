@@ -53,6 +53,7 @@ const SearchPresenter = ({
                                     imageurl={item.poster_path}
                                     voteAverage={item.vote_average}
                                     year={item.release_date}
+                                    isMovie={true}
                                 />
                             ))}
                         </Section>
