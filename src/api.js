@@ -42,18 +42,11 @@ export const moviesAPI = {
     nowPlaying: () => getAnything("movie/now_playing"),
     upComing: () => getAnything("movie/upcoming"),
     popular: () => getAnything("movie/popular"),
-    movieDetail: id=>
-        getAnything(`movie/${id}`, {
-            params: {
-                append_to_response: "videos"
-            }
-        }),
-    search: term =>
-        getAnything(`search/movie`, {
-            params: {
-                query: encodeURIComponent(term)
-            }
-        })
+    movieDetail: id =>
+        getAnything(`movie/${id}`,
+            { append_to_response: "videos" }
+        ),
+    search: (query) => getAnything(`search/movie`, { query }),
 
 }
 
@@ -67,10 +60,6 @@ export const tvAPI = {
                 append_to_response: "videos"
             }
         }),
-    search: term =>
-        getAnything(`search/tv`,{
-            params: {
-                query: encodeURIComponent(term)
-            }
-        })
+    search: query =>
+        getAnything(`search/tv`,{query})
 }

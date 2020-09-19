@@ -34,7 +34,25 @@ const SearchPresenter = ({
                     value={keyword}
                     onChange={onChange}
                 />
+
+
             </Form>
+            { movies && movies.length > 0 &&
+                <div> movie is :
+                    {movies.map(item => (
+                        <h1>{item.title}</h1>
+                    ))}
+                </div>
+            }
+
+            { shows && shows.length > 0 &&
+                <div> show is :
+                    {shows.map(item => (
+                        <h1>{item.name}</h1>
+                    ))}
+                </div>
+            }
+
         </Container>
     );
 };
@@ -46,7 +64,7 @@ SearchPresenter.propTypes = {
     loading: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
     onSubmit: PropTypes.func.isRequired,
-    keyword: PropTypes.string.isRequired
+    keyword: PropTypes.string
 };
 
 export default SearchPresenter;
