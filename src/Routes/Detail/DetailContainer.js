@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useParams, useLocation} from "react-router-dom";
 import {tvAPI, moviesAPI} from "../../api"
-
+import DetailPresenter from "./DetailPresenter";
 const DetailContainer = ({ pathname }) => {
 
     let {id} = useParams();
@@ -9,7 +9,7 @@ const DetailContainer = ({ pathname }) => {
 
     const [item, setItem] = useState({
         result : {},
-        resulterror : null,
+        resultError : null,
         loading : true
     })
 
@@ -20,17 +20,24 @@ const DetailContainer = ({ pathname }) => {
     }, [id])
 
     const getData = async () => {
-        console.log("123");
+        const [result, resultError] = location.pathname.includes("/movie/")
+        ? await moviesAPI.movieDetail(id)
+        : await tvAPI.tvDetail(id)
+        setItem({
+            result,
+            resultError,
+            loading: false
+        })
+        console.log(result);
+
     }
 
 
 
     return (
-        <div>
-            <h1>
-                {id}
-            </h1>
-        </div>
+       <DetailPresenter
+           {...item}
+       />
     );
 };
 
